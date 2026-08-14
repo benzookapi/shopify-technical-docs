@@ -201,6 +201,23 @@
         color: var(--muted);
       }
 
+      .demo-video {
+        display: block;
+        width: 100%;
+        aspect-ratio: 16 / 9;
+        margin-top: 18px;
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        background: #0f1713;
+        object-fit: contain;
+      }
+
+      .demo-source {
+        margin: 12px 0 0;
+        color: var(--muted);
+        font-size: 14px;
+      }
+
       .source-badge {
         display: inline-flex;
         width: fit-content;
@@ -485,6 +502,21 @@
     </section>
 
     <main>
+      <section class="section" aria-labelledby="demo-title">
+        <div class="section-header">
+          <div>
+            <h2 id="demo-title">Demo walkthrough</h2>
+            <p class="section-lede">Watch the Shopify Collective workflow demonstrated from the merchant experience.</p>
+          </div>
+          <span class="source-badge">Video</span>
+        </div>
+        <video class="demo-video" controls playsinline preload="metadata">
+          <source src="https://github.com/user-attachments/assets/81c9ce3f-c704-47e6-83af-c0cf1a168057" type="video/mp4">
+          Your browser does not support embedded video. <a href="https://github.com/user-attachments/assets/81c9ce3f-c704-47e6-83af-c0cf1a168057">Open the video on GitHub</a>.
+        </video>
+        <p class="demo-source"><a href="https://github.com/shopify-apac-ts/shopify-technical-docs/wiki/Demo-&amp;-Pages">View all demos and published pages on the GitHub Wiki</a>.</p>
+      </section>
+
       <section class="section" aria-labelledby="terms">
         <div class="section-header">
           <div>

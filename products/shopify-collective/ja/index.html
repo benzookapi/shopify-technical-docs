@@ -197,6 +197,23 @@
         color: var(--muted);
       }
 
+      .demo-video {
+        display: block;
+        width: 100%;
+        aspect-ratio: 16 / 9;
+        margin-top: 18px;
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        background: #0f1713;
+        object-fit: contain;
+      }
+
+      .demo-source {
+        margin: 12px 0 0;
+        color: var(--muted);
+        font-size: 14px;
+      }
+
       .source-badge {
         display: inline-flex;
         width: fit-content;
@@ -464,6 +481,21 @@
     </section>
 
     <main>
+      <section class="section" aria-labelledby="demo-title">
+        <div class="section-header">
+          <div>
+            <h2 id="demo-title">デモ動画</h2>
+            <p class="section-lede">Shopify Collectiveのワークフローを、マーチャントの操作画面から確認できます。</p>
+          </div>
+          <span class="source-badge">Video</span>
+        </div>
+        <video class="demo-video" controls playsinline preload="metadata">
+          <source src="https://github.com/user-attachments/assets/81c9ce3f-c704-47e6-83af-c0cf1a168057" type="video/mp4">
+          このブラウザでは動画を再生できません。<a href="https://github.com/user-attachments/assets/81c9ce3f-c704-47e6-83af-c0cf1a168057">GitHubで動画を開く</a>。
+        </video>
+        <p class="demo-source"><a href="https://github.com/shopify-apac-ts/shopify-technical-docs/wiki/Demo-&amp;-Pages">GitHub Wikiでデモ動画と公開ページの一覧を見る</a>。</p>
+      </section>
+
       <section class="section" aria-labelledby="terms">
         <div class="section-header">
           <div>
