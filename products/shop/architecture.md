@@ -87,6 +87,16 @@ The sequence summarizes the customer journey. Measure checkout completion in the
 
 Shop connects discovery with purchasing and post-purchase visits. Eligible products can be discovered in Shop and supported AI experiences. A product published to Shop with direct selling enabled can be purchased there; a discoverable product that is not published to Shop can direct the shopper to the merchant’s online store. [Source: Shop products and collections](https://help.shopify.com/en/manual/online-sales-channels/shop/manage-shop-store/products-and-collections).
 
+| Shop menu | What it manages | Key capabilities and integrations | Official help |
+| --- | --- | --- | --- |
+| Posts | Shoppable image and video content shown in the Shop home feed, Shop Store, and Following tab | Create, schedule, expire, and tag posts with up to 10 products or one collection. Reuse media made for social networks or other channels; import recent and new Instagram Reels, images, and carousels; or create and sync shoppable video with supported partner apps in the Shopify App Store's Shop shoppable video collection. | [Create posts for Shop](https://help.shopify.com/en/manual/online-sales-channels/shop/marketing/posts) |
+| Advertising | Performance-based customer acquisition through Shop Campaigns | Set average customer acquisition cost, target countries, target order value, daily budget, and optional customer segments. Ads can run in Shop, on the Shop website, in Shopify Product Network, and optionally on third-party platforms. | [Shop Campaigns](https://help.shopify.com/en/manual/online-sales-channels/shop/shop-campaigns) |
+| Reviews | Product review collection and merchant review management | View, reply to, and report reviews; set the request delay from 1 to 180 days after delivery; include eligible online-store purchases; automate with Shopify Flow; and display eligible reviews collected by supported partner apps. | [Shop product reviews](https://help.shopify.com/en/manual/online-sales-channels/shop/product-reviews) / [Manage reviews](https://help.shopify.com/en/manual/online-sales-channels/shop/product-reviews/manage) |
+| Promise | Shop Promise eligibility, delivery-date display, and the limited guarantee | Eligible high-performing merchants fulfilling from the United States can enable or disable the badge and predicted delivery dates, manage the shipping-rate description, and provide the limited guarantee for eligible late first deliveries. | [Activate Shop Promise](https://help.shopify.com/en/manual/fulfillment/setup/shop-promise/activate) |
+| Settings | Shop selling, discovery, and channel preferences | Choose direct selling or an online-store link; manage estimated delivery dates, in-store self-serve returns, subscriptions, review behavior, storefront-activity reminders, search-engine indexing, and participation in Shop marketing campaigns. | [Set up the Shop channel](https://help.shopify.com/en/manual/online-sales-channels/shop/setup) / [Marketing settings](https://help.shopify.com/en/manual/online-sales-channels/shop/marketing/settings) |
+
+Demo videos for these menu items will be added later.
+
 ```mermaid
 flowchart TB
     Setup["Meet merchant and product eligibility"] --> Publish["Manage products and selling method"]
@@ -362,6 +372,12 @@ Shop determines relevant products for Minis. Merchants cannot choose which produ
 - [Shop customer experience](https://help.shopify.com/en/manual/online-sales-channels/shop/customer-experience)
 - [Shop product management and subscriptions](https://help.shopify.com/en/manual/online-sales-channels/shop/manage-shop-store/products-and-collections)
 - [Shop merchant requirements](https://help.shopify.com/en/manual/online-sales-channels/shop/eligibility/requirements)
+- [Shop posts](https://help.shopify.com/en/manual/online-sales-channels/shop/marketing/posts)
+- [Shop Campaigns](https://help.shopify.com/en/manual/online-sales-channels/shop/shop-campaigns)
+- [Shop product reviews](https://help.shopify.com/en/manual/online-sales-channels/shop/product-reviews)
+- [Shop Promise](https://help.shopify.com/en/manual/fulfillment/setup/shop-promise/activate)
+- [Shop channel setup](https://help.shopify.com/en/manual/online-sales-channels/shop/setup)
+- [Shop marketing settings](https://help.shopify.com/en/manual/online-sales-channels/shop/marketing/settings)
 - [Shop Minis shopper guide](https://help.shop.app/en/shop/shopping/discover/shop-minis)
 - [Shop Minis SDK](https://shopify.dev/docs/api/shop-minis)
 - [Shop Pay on any platform](https://help.shopify.com/en/manual/payments/shop-pay/shop-pay-on-any-platform)
