@@ -20,7 +20,7 @@ UI = {
         "steps": ["Discover products through Shop and AI", "Buy with fewer repeated inputs", "Return through tracking and subscriptions"],
         "diagram": "Diagram", "expand": "Expand diagram", "close": "Close diagram",
         "error": "Diagrams could not load. Their source remains available below and in the Markdown.",
-        "footer": "Shop · Public sources reviewed October 15, 2026",
+        "footer": "Shop · Public sources reviewed October 15, 2026 · MCP and Catalog update October 19, 2026",
         "skip": "Skip to content",
     },
     "ja": {
@@ -30,7 +30,7 @@ UI = {
         "steps": ["ShopやAIを通じて商品と出会う", "情報の再入力を減らして購入する", "配送追跡やサブスクで再訪する"],
         "diagram": "図", "expand": "図を拡大", "close": "図を閉じる",
         "error": "図を読み込めませんでした。図の原文はこのページとMarkdown原本で確認できます。",
-        "footer": "Shop · 公開情報の確認日：2026年10月15日",
+        "footer": "Shop · 公開情報の確認日：2026年10月15日 · MCP・Catalog更新：2026年10月19日",
         "skip": "本文へ移動",
     },
 }
@@ -241,7 +241,7 @@ def main():
             raise ValueError("Empty translation")
         if bool(heading(en)) != bool(heading(ja)) or (heading(en) and heading(en)[0] != heading(ja)[0]):
             raise ValueError("Heading structure mismatch")
-        if re.findall(r"https://[^\s)]+", en) != re.findall(r"https://[^\s)]+", ja):
+        if re.findall(r"https://[^\s)`]+", en) != re.findall(r"https://[^\s)`]+", ja):
             raise ValueError("Source links must match before locale rewriting")
         if en.startswith("```mermaid") and (not ja.startswith("```mermaid") or len(en.splitlines()) != len(ja.splitlines())):
             raise ValueError("Diagram structure mismatch")

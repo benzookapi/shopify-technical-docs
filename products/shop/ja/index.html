@@ -26,8 +26,8 @@
     <aside class="summary-panel"><h2>商品との出会いから、次の購入まで</h2><ol class="summary-list"><li><span class="marker">1</span><span>ShopやAIを通じて商品と出会う</span></li><li><span class="marker">2</span><span>情報の再入力を減らして購入する</span></li><li><span class="marker">3</span><span>配送追跡やサブスクで再訪する</span></li></ol></aside>
   </div></section>
   <div class="page-layout">
-    <nav class="contents" aria-label="このページの内容"><strong>このページの内容</strong><a href="#why-shop-matters">1. Shopが重要な理由</a><a href="#shop-ecosystem-overview">2. Shopエコシステムの全体像</a><a href="#shop-pay-in-checkout">3. チェックアウトでのShop Pay</a><a href="#shop-channel-and-agentic-commerce">4. ShopチャネルとAgentic Commerce</a><a href="#shop-minis">5. Shop Minis</a><a href="#shop-pay-off-shopify">6. Shopify以外のECでShop Payを使う</a><a href="#shop-md-and-personal-ai-shopping-agents">7. Shop.mdと個人のAIショッピングエージェント</a><a href="#getting-started-and-measuring-results">8. 導入と効果測定</a><a href="#frequently-asked-questions">9. よくある質問</a><a href="#references">10. 参考資料</a><a href="#disclaimer">免責事項</a></nav>
-    <main id="content"><p class="reviewed">公開ドキュメントの確認日：<strong>2026年10月15日</strong>。図は公開されたインターフェースと事業者が確認できる業務フローを示し、Shopify内部の実装を表すものではありません。</p><p id="diagram-status" role="status"></p><section class="section" id="why-shop-matters" aria-labelledby="why-shop-matters-title"><h2 id="why-shop-matters-title">1. Shopが重要な理由</h2>
+    <nav class="contents" aria-label="このページの内容"><strong>このページの内容</strong><a href="#why-shop-matters">1. Shopが重要な理由</a><a href="#shop-ecosystem-overview">2. Shopエコシステムの全体像</a><a href="#shop-pay-in-checkout">3. チェックアウトでのShop Pay</a><a href="#shop-channel-and-agentic-commerce">4. ShopチャネルとAgentic Commerce</a><a href="#shop-minis">5. Shop Minis</a><a href="#shop-pay-off-shopify">6. Shopify以外のECでShop Payを使う</a><a href="#shop-mcp-shop-md-and-shop-dev">7. Shop MCP・Shop.md・shop.dev</a><a href="#getting-started-and-measuring-results">8. 導入と効果測定</a><a href="#frequently-asked-questions">9. よくある質問</a><a href="#references">10. 参考資料</a><a href="#disclaimer">免責事項</a></nav>
+    <main id="content"><p class="reviewed">公開情報の確認日：<strong>2026年10月15日</strong>。Shop MCP・Shop.md・shop.dev・Catalog比較は<strong>2026年10月19日</strong>に更新。図は公開インターフェースとマーチャントから確認できる処理を示し、Shopifyの内部実装を示すものではありません。</p><p id="diagram-status" role="status"></p><section class="section" id="why-shop-matters" aria-labelledby="why-shop-matters-title"><h2 id="why-shop-matters-title">1. Shopが重要な理由</h2>
 <p>Shopは、自社のコマース事業に新しい販売チャネルを加えます。お客様がブランドを発見し、購入し、フォローし、再訪する接点をつくります。既存の集客経路に加えて顧客接点を広げ、事業者とお客様の関係を継続することが価値です。</p>
 <p><strong>追加の出店料・マーケットプレイス手数料はありません。</strong> Shopifyのプラン料金、決済手数料、有料キャンペーン、配送費、該当するアプリ・連携費用は別途必要です。「出店無料」は販売に関わるすべての費用が無料という意味ではありません。<a href="https://www.shopify.com/jp/shop">出典：Shopで販売</a>。</p>
 <h3>お客様のニーズから成長機会を考える</h3>
@@ -36,13 +36,13 @@
 <p>売上拡大は、実測して確かめる仮説として扱います。一つの市場・商品群から始め、導入前の実績と比較し、採算と顧客体験を確認して展開を広げます。Shopは集客経路を多様化する可能性がありますが、売上を保証したり、すべてのモールやOMS業務を代替したりするものではありません。</p>
 </section>
 <section class="section" id="shop-ecosystem-overview" aria-labelledby="shop-ecosystem-overview-title"><h2 id="shop-ecosystem-overview-title">2. Shopエコシステムの全体像</h2>
-<div class="table-wrap" role="region" tabindex="0" aria-label="2. Shopエコシステムの全体像"><table><thead><tr><th scope="col">製品・接点</th><th scope="col">役割</th></tr></thead><tbody><tr><td>Shop</td><td>モバイル、ウェブ、対応するエージェント型体験で利用できるショッピングの接点。配送追跡にも対応</td></tr><tr><td>Shopチャネル</td><td>Shopストア、対象商品、直接販売、実績を管理する事業者向けの機能</td></tr><tr><td>Shop Pay</td><td>購入者が保存した情報を使うエクスプレスチェックアウト</td></tr><tr><td>Shopify Payments</td><td>決済処理と入金。ショッピングの接点であるShopとは役割が異なる</td></tr><tr><td>Shop Minis</td><td>React SDKで構築する、Shopアプリ内のインタラクティブな購入体験</td></tr><tr><td>Shop Pay Wallet</td><td>Shopify以外の既存チェックアウトにShop Payを追加する連携</td></tr><tr><td>Shop.md / Shop MCP</td><td>個人のAIエージェントを商品検索、購入、注文追跡につなぐ入口とツール</td></tr><tr><td>Shopify Catalog / UCP</td><td>対応するエージェント型体験で使う商品発見のデータとコマースのプロトコル</td></tr></tbody></table></div>
+<div class="table-wrap" role="region" tabindex="0" aria-label="2. Shopエコシステムの全体像"><table><thead><tr><th scope="col">製品・接点</th><th scope="col">役割</th></tr></thead><tbody><tr><td>Shop</td><td>モバイル、ウェブ、対応するエージェント型体験で利用できるショッピングの接点。配送追跡にも対応</td></tr><tr><td>Shopチャネル</td><td>Shopストア、対象商品、直接販売、実績を管理する事業者向けの機能</td></tr><tr><td>Shop Pay</td><td>購入者が保存した情報を使うエクスプレスチェックアウト</td></tr><tr><td>Shopify Payments</td><td>決済処理と入金。ショッピングの接点であるShopとは役割が異なる</td></tr><tr><td>Shop Minis</td><td>React SDKで構築する、Shopアプリ内のインタラクティブな購入体験</td></tr><tr><td>Shop Pay Wallet</td><td>Shopify以外の既存チェックアウトにShop Payを追加する連携</td></tr><tr><td>Shop.md</td><td>パーソナルAIショッピングエージェントを設定する利用者向けの入口</td></tr><tr><td>Shop MCP</td><td>商品検索、カート、チェックアウト、Shopアカウント、注文追跡のためのホスト型ツール</td></tr><tr><td>shop.dev</td><td>Playground、接続ガイド、APIリファレンスを提供する開発者ポータル</td></tr><tr><td>Shopify Catalog / UCP</td><td>対応するエージェント型体験で使う商品発見のデータとコマースのプロトコル</td></tr></tbody></table></div>
 <figure class="diagram-wrap" tabindex="0" aria-label="2. Shopエコシステムの全体像 · 図 1"><figcaption><span>2. Shopエコシステムの全体像 · 図 1</span><button class="diagram-expand" type="button" hidden>図を拡大</button></figcaption><pre class="mermaid">flowchart TB
     Merchant[&quot;事業者：商品と販売条件&quot;] --&gt; Channel[&quot;Shopチャネル&quot;]
     Channel --&gt; Shop[&quot;Shop：モバイル・ウェブ&quot;]
     Merchant --&gt; Catalog[&quot;Shopify Catalog&quot;]
     Catalog --&gt; Agents[&quot;対応するAI購買体験&quot;]
-    Catalog --&gt; MCP[&quot;Shop MCP / Shop.md&quot;]
+    Catalog --&gt; MCP[&quot;Shop MCP&quot;]
     Shop --&gt; Minis[&quot;Shop Minis：体験を通じた商品発見&quot;]
     Shop --&gt; Checkout[&quot;Shopまたは事業者のチェックアウト&quot;]
     Minis --&gt; Checkout
@@ -218,34 +218,67 @@
 <ul><li><strong>金額不整合・在庫不足：</strong> 決済送信前にエラーを返し、チェックアウトの状態を更新します。</li><li><strong>決済拒否：</strong> 失敗を表示して再試行できるようにし、支払い済みとして扱いません。</li><li><strong>タイムアウト・結果不明：</strong> 試行の識別子を保持し、同じ決済試行には同じ冪等キーを使います。新しい請求として再実行する前に照合します。</li><li><strong>ポップアップ終了・Webhook未着：</strong> ブラウザーに依存せず、照合処理で注文と決済の状態を復旧します。</li><li><strong>返金・取消：</strong> ECの記録、在庫・OMS、Shopifyの決済操作を連携します。EC側の取消だけではすべてのシステムの状態は一致しません。</li></ul>
 <p>復旧処理は、公開されたWalletガイドに基づく連携設計の推奨事項です。照合、出荷、返金、支払異議の担当を明確にします。<a href="https://shopify.dev/docs/api/commerce-components/pay/monitoring">出典：監視と復旧</a>、<a href="https://shopify.dev/docs/api/commerce-components/pay/graphql-post-payment">決済後のGraphQL</a>。</p>
 </section>
-<section class="section" id="shop-md-and-personal-ai-shopping-agents" aria-labelledby="shop-md-and-personal-ai-shopping-agents-title"><h2 id="shop-md-and-personal-ai-shopping-agents-title">7. Shop.mdと個人のAIショッピングエージェント</h2>
-<p><a href="https://shop.md/">Shop.md</a>は、個人のAIエージェントをShopにつなぐ公開の入口です。パーソナライズされた検索、Shop Payでの購入、注文追跡を紹介しています。このリポジトリのMarkdown原本とは別のサービスです。Shop MCPは、対応するエージェント連携に検索、カート、購入、ログイン、注文のツールを提供します。</p>
-<figure class="diagram-wrap" tabindex="0" aria-label="7. Shop.mdと個人のAIショッピングエージェント · 図 1"><figcaption><span>7. Shop.mdと個人のAIショッピングエージェント · 図 1</span><button class="diagram-expand" type="button" hidden>図を拡大</button></figcaption><pre class="mermaid">sequenceDiagram
-    participant Buyer as 購入者
-    participant Agent as 個人のAIエージェン&lt;br/&gt;ト
+<section class="section" id="shop-mcp-shop-md-and-shop-dev" aria-labelledby="shop-mcp-shop-md-and-shop-dev-title"><h2 id="shop-mcp-shop-md-and-shop-dev-title">7. Shop MCP・Shop.md・shop.dev</h2>
+<p>Shopは自社アプリに加え、パーソナルAIエージェントにも購買機能を提供します。利用者と開発者に向けて、役割の異なる3つの公開窓口があります。<a href="https://shop.md/">出典：Shop.md</a>、<a href="https://shop.dev/docs">Shop MCP概要</a>、<a href="https://shop.dev/">開発者ポータルshop.dev</a>。</p>
+<h3>3つの役割を理解する</h3>
+<div class="table-wrap" role="region" tabindex="0" aria-label="7. Shop MCP・Shop.md・shop.dev"><table><thead><tr><th scope="col">窓口</th><th scope="col">対象と役割</th><th scope="col">始め方</th></tr></thead><tbody><tr><td>Shop.md</td><td>パーソナルAIショッパーを設定する買い物客向けの入口</td><td>設定プロンプトのコピー、ChatGPT・Claudeのディレクトリへのリンク、「Build your own skill」を利用</td></tr><tr><td>Shop MCP</td><td>購買ツールを呼び出す開発者と対応エージェント向け</td><td><code>https://mcp.shop.com/</code>に接続し、商品検索、カート、チェックアウト、アカウント、注文を扱う</td></tr><tr><td>shop.dev</td><td>購買アプリやエージェントを構築する開発者向け</td><td>Playground、クイックスタート、接続ガイド、ツール・APIリファレンスを参照</td></tr></tbody></table></div>
+<p>Shop.mdは設定を案内し、接続したエージェントがShopのツールで購買処理を行います。このリポジトリのMarkdown原本とも別のものです。公開されている<a href="https://shop.com/skill.md">Shop設定用スキル</a>は、CLI、MCP、HTTPの順に利用できる接続方法を選びます。接続方法は1つに絞り、それに対応したスキルを使います。MCP向けの案内は<a href="https://mcp.shop.com/skill.md">Shop MCPスキル</a>とリソース<code>skill://shop/SKILL.md</code>で公開されています。これらはエージェントの動作を説明するもので、利用者のアカウントや支払いの承認ではありません。<a href="https://shop.dev/docs/connect">出典：エージェントの接続</a>。</p>
+<h3>Shop MCPが提供する機能</h3>
+<p>公開リファレンスには<strong>17個のツール</strong>があり、以下のように分類できます。CLI、対応MCPクライアント、直接のHTTP呼び出しは同じサービスに接続します。言語モデルを使わない通常のアプリからも利用できます。<a href="https://shop.dev/docs">出典：Shop MCP概要</a>、<a href="https://shop.dev/docs/tools">ツールリファレンス</a>。</p>
+<div class="table-wrap" role="region" tabindex="0" aria-label="7. Shop MCP・Shop.md・shop.dev"><table><thead><tr><th scope="col">ツールの分類</th><th scope="col">機能</th><th scope="col">Shopサインイン</th></tr></thead><tbody><tr><td>Catalog：3ツール</td><td><code>search_catalog</code>、<code>lookup_catalog</code>、<code>get_product</code>による商品検索と商品・バリエーションの詳細取得</td><td>任意。サインインすると保存済みの好みを結果に反映できる</td></tr><tr><td>カート・チェックアウト：7ツール</td><td>カートやチェックアウトの作成・取得・更新、対応する購入処理の実行</td><td>ツールへのアクセス自体は任意。保存済み住所やShop Payには利用者のアカウントを使う</td></tr><tr><td>アカウント・注文：2ツール</td><td><code>get_account</code>、<code>search_orders</code>によるアカウント情報と進行中・最近の注文の取得</td><td>必須</td></tr><tr><td>購入承認：5ツール</td><td>Shopify以外のチェックアウトでエージェントが支払うための承認依頼と管理</td><td>必須。クライアントの権限も必要</td></tr></tbody></table></div>
+<p>接続先は公開資料どおりルートURLを使い、<code>/mcp</code>を付け足しません。MCPクライアントにはプロトコル<code>2026-07-28</code>への対応が必要です。従来の<code>initialize</code>ハンドシェイクのみ対応するクライアントでは、CLIまたはHTTPを使います。最新の要件は<a href="https://shop.dev/docs/connect">接続ガイド</a>を確認してください。</p>
+<h3>Shop MCPとGlobal Catalogの関係</h3>
+<p>Shop MCPの商品検索ツールはShopifyのGlobal Catalogを呼び出します。商品検索を組み込み、その後の体験を自社で管理するアプリは、Global Catalogを直接呼び出すこともできます。以下の矢印は公開されている役割の分担を示し、Shopifyの内部構成を示すものではありません。<a href="https://shop.dev/docs/catalog-api">出典：Catalog API比較</a>。</p>
+<figure class="diagram-wrap" tabindex="0" aria-label="7. Shop MCP・Shop.md・shop.dev · 図 1"><figcaption><span>7. Shop MCP・Shop.md・shop.dev · 図 1</span><button class="diagram-expand" type="button" hidden>図を拡大</button></figcaption><pre class="mermaid">flowchart TB
+    Entry[&quot;Shop.md&lt;br/&gt;利用者向けの設定&quot;] --&gt; Agent[&quot;パーソナルAIエージェント&quot;]
+    Docs[&quot;shop.dev&lt;br/&gt;開発者向けの情報&quot;] -.-&gt; Agent
+    Skill[&quot;Shopスキル&lt;br/&gt;エージェント向けの案内&quot;] -.-&gt; Agent
+    Agent --&gt;|CLI・MCP・HTTP| MCP[&quot;Shop MCP&lt;br/&gt;mcp.shop.com&quot;]
+    MCP --&gt;|商品検索| Catalog[&quot;Global Catalog&lt;br/&gt;Shopifyの商品検索&quot;]
+    MCP --&gt;|カート・チェックアウト| Merchant[&quot;マーチャントの購買処理&lt;br/&gt;Cart / Checkout / Order MCP&quot;]
+    MCP --&gt;|アカウント・注文| Account[&quot;Shopアカウント&lt;br/&gt;注文&quot;]
+    App[&quot;自社アプリ・エージェント&lt;br/&gt;自社のagent profile&quot;] --&gt;|商品検索| Catalog
+    App --&gt;|UCPを直接連携| Merchant</pre></figure>
+<div class="table-wrap" role="region" tabindex="0" aria-label="7. Shop MCP・Shop.md・shop.dev"><table><thead><tr><th scope="col">比較項目</th><th scope="col">Shop MCP</th><th scope="col">Global Catalog MCPを直接利用</th></tr></thead><tbody><tr><td>接続先</td><td><code>https://mcp.shop.com/</code></td><td><code>https://catalog.shopify.com/api/ucp/mcp</code></td></tr><tr><td>ツールの範囲</td><td>商品検索に加え、購買とShopアカウントのツール</td><td>検索、既知商品の参照、商品詳細の3ツール</td></tr><tr><td>Catalog呼び出しのagent profile</td><td>Shop MCPが自身のものを付与</td><td>自社で公開し、各呼び出しに付与</td></tr><tr><td>認証情報</td><td>アカウント機能には利用者のShopトークン。検索は匿名でも可能</td><td>API認証情報でアプリを識別。キーなしの検索は低いレート制限で可能</td></tr><tr><td>向いている用途</td><td>パーソナルショッパーを購入・追跡までつなぐ</td><td>自社アプリに商品検索を組み込み、前後の連携を自社で管理</td></tr></tbody></table></div>
+<p>3つの商品検索ツールは同じ<code>catalog</code>引数を受け取ります。Catalogを直接呼ぶ場合は、<code>meta.ucp-agent.profile</code>に公開したプロファイルのURLを指定します。プロファイルがないリクエストはHTTP 422で拒否されます。Shop MCPは自身のプロファイルを付けるため、Catalog用のこのメタデータをShop MCPの検索引数にコピーしません。<a href="https://shop.dev/docs/catalog-api">出典：Catalog API</a>。</p>
+<p>agent profileは対応機能を宣言するもので、利用者をサインインさせるものではありません。APIキーとそのアクセストークンは開発者のアプリを識別し、Catalogのレート制限を引き上げます。Shopアカウントトークンは利用者を表します。UCPを直接連携する場合も、対応する機能では別途buyer-linked tokenを利用できます。それぞれ目的が異なります。<a href="https://shop.dev/docs/authentication">出典：Shop認証</a>、<a href="https://shopify.dev/docs/agents/profiles/auth-and-rate-limiting">UCP認証とレート制限</a>。</p>
+<p>Global Catalogを直接使い、同じストアやカテゴリの条件を繰り返し適用する場合は、Dev Dashboardに設定を保存する<strong>Saved Catalogs</strong>を検討します。1つのマーチャントに特化したエージェントでは、<code>https://{storeDomain}/api/ucp/mcp</code>の<strong>Storefront Catalog</strong>も選択肢です。Global Catalog自体は商品検索を担当します。購入や注文取得も直接組み込む場合は、必要なプロファイル・認証情報・権限を用意し、マーチャントのCart・Checkout・Order MCPの機能を連携します。CatalogのAPIキーだけで購入確定の権限が付与されるわけではありません。<a href="https://shopify.dev/docs/agents/catalog">出典：Catalogの種類とSaved Catalogs</a>、<a href="https://shopify.dev/docs/agents/profiles/auth-and-rate-limiting">UCP認証</a>、<a href="https://shopify.dev/docs/agents/carts-and-checkout/checkout-mcp">Checkout MCP</a>。</p>
+<h3>商品検索から購入結果の確認まで</h3>
+<figure class="diagram-wrap" tabindex="0" aria-label="7. Shop MCP・Shop.md・shop.dev · 図 2"><figcaption><span>7. Shop MCP・Shop.md・shop.dev · 図 2</span><button class="diagram-expand" type="button" hidden>図を拡大</button></figcaption><pre class="mermaid">sequenceDiagram
+    participant Buyer as 買い物客
+    participant Agent as パーソナルAIエージ&lt;br/&gt;ェント
     participant MCP as Shop MCP
-    participant Store as 事業者のチェックア&lt;br/&gt;ウト
-    Buyer-&gt;&gt;Agent: 希望する用途・商品&lt;br/&gt;を相談
-    Agent-&gt;&gt;MCP: 検索して商品詳細を&lt;br/&gt;取得
-    MCP--&gt;&gt;Agent: 商品候補・価格・販&lt;br/&gt;売可否
+    participant Store as マーチャントのチェ&lt;br/&gt;ックアウト
+    Buyer-&gt;&gt;Agent: 希望や商品を伝える
+    Agent-&gt;&gt;MCP: 商品検索・詳細取得
+    MCP--&gt;&gt;Agent: 商品・バリエーショ&lt;br/&gt;ン・seller.domain
     Agent--&gt;&gt;Buyer: 候補と購入条件を提&lt;br/&gt;示
-    Buyer-&gt;&gt;Agent: 商品を選択
-    Agent-&gt;&gt;MCP: カートとチェックア&lt;br/&gt;ウトを作成
-    opt 保存済みShop Pay情&lt;br/&gt;報を使う場合
-        Buyer-&gt;&gt;MCP: Shopでログイン
+    Buyer-&gt;&gt;Agent: 選んだ商品のチェッ&lt;br/&gt;クアウトを依頼
+    opt 保存済みShop Pay情&lt;br/&gt;報を利用
+        Buyer-&gt;&gt;MCP: Shopにサインイン
     end
-    Agent--&gt;&gt;Buyer: 合計金額・支払方法&lt;br/&gt;の確認を求める
-    Buyer-&gt;&gt;Agent: 購入を承認
-    Agent-&gt;&gt;MCP: 対応するチェックア&lt;br/&gt;ウトを完了
-    MCP-&gt;&gt;Store: 購入を連携
-    Agent-&gt;&gt;MCP: 購入状態をポーリン&lt;br/&gt;グ
-    MCP--&gt;&gt;Agent: 購入完了・注文情報&lt;br/&gt;または現在の状態
-    Agent--&gt;&gt;Buyer: 確認した結果を伝え&lt;br/&gt;る
-    opt 後からログインして&lt;br/&gt;注文追跡
-        Agent-&gt;&gt;MCP: 注文と配送追跡を検&lt;br/&gt;索
+    Agent-&gt;&gt;MCP: 販売元でチェックア&lt;br/&gt;ウトを作成
+    MCP-&gt;&gt;Store: マーチャントのチェ&lt;br/&gt;ックアウトを準備
+    MCP--&gt;&gt;Agent: 総額・支払方法・&lt;br/&gt;continue_url
+    alt 支払方法があり購入&lt;br/&gt;確定の準備完了
+        Agent--&gt;&gt;Buyer: 販売元・商品・総額&lt;br/&gt;・支払いを確認
+        Buyer-&gt;&gt;Agent: 購入と支払方法を承&lt;br/&gt;認
+        Agent-&gt;&gt;MCP: complete_checkout&lt;br/&gt;を1回実行
+        MCP-&gt;&gt;Store: 購入処理を送信
+    else 利用者の操作が必要
+        Agent--&gt;&gt;Buyer: マーチャントの&lt;br/&gt;continue_urlを案内
+        Buyer-&gt;&gt;Store: 内容を確認し必要な&lt;br/&gt;操作を完了
+    end
+    Agent-&gt;&gt;MCP: get_checkoutで結果&lt;br/&gt;を確認
+    MCP--&gt;&gt;Agent: 最新ステータス・完&lt;br/&gt;了時は注文
+    Agent--&gt;&gt;Buyer: 確定した注文または&lt;br/&gt;未確認の状態を報告
+    opt 後日の注文追跡はサ&lt;br/&gt;インインして利用
+        Agent-&gt;&gt;MCP: search_orders
         MCP--&gt;&gt;Agent: 注文・配送情報
     end</pre></figure>
-<p>このシーケンスは、対応するShopifyストアへの購入経路を示します。Shopify以外のストアには別の承認・支払い経路が公開されています。検索は認証情報なしでも利用できますが、保存済みShop Pay情報や注文検索には購入者のログインが必要です。購入時は合計金額と支払方法を購入者が確認します。2026年10月13日の公開時点でShop MCPにはWebhookがなく、購入状態をポーリングします。これはWallet連携の事業者向けWebhookとは異なります。<a href="https://shopify.dev/changelog/posts/add-shopping-and-shop-pay-checkout-to-any-agent-with-shop-mcp">出典：Shop MCPの公開と対応フロー</a>。</p>
+<p>チェックアウトはマーチャントごとに作成されます。利用者が確認・支払いできるよう<code>continue_url</code>を案内し、追加操作が必要な場合や利用できる支払方法がない場合もこのURLに引き継ぎます。<code>status: completed</code>と<code>order</code>の両方が返った場合のみ購入完了と判断します。購入確定処理がタイムアウトするなど結果が不明な場合は<code>get_checkout</code>で確認し、<code>complete_checkout</code>の再送や代わりの購入の作成は行いません。<a href="https://shop.dev/docs/checkout">出典：カートとチェックアウト</a>。</p>
+<p>このシーケンスはShopifyストアでの購入経路を示します。2026年10月13日の公開時点でShop MCPはWebhookを提供していないため、チェックアウトの状態をポーリングします。既存のCatalog直接連携は変更なしで継続利用できます。<a href="https://shopify.dev/changelog/posts/add-shopping-and-shop-pay-checkout-to-any-agent-with-shop-mcp">出典：Shop MCP公開情報</a>。</p>
+<p>Shopify以外のチェックアウトでは、別の承認フローを使います。利用者がShop上でストア、条件、保存済みカード、利用上限を確認・承認してから、エージェントにその購入用の支払い認証情報が渡されます。クライアントの権限が必要で、Shopifyのチェックアウトが失敗した際の代替手段ではありません。このエージェント向けの承認経路は、セクション6のマーチャントが実装する<strong>Shop Pay Wallet</strong>連携とも異なります。<a href="https://shop.dev/docs/approvals">出典：Shopify以外での購入承認</a>。</p>
 </section>
 <section class="section" id="getting-started-and-measuring-results" aria-labelledby="getting-started-and-measuring-results-title"><h2 id="getting-started-and-measuring-results-title">8. 導入と効果測定</h2>
 <ol><li><strong>利用条件を確認する。</strong> 最新のShopの事業者・商品要件、Shopify Paymentsの設定、Shopify Network Intelligenceの設定を確認します。管理画面でShopチャネルの状態を確認します。</li><li><strong>商品情報を整える。</strong> 商品名、画像、カテゴリー、価格、説明、販売可否を正確に設定します。人にもAIにも選ぶ判断材料が伝わる情報を用意します。</li><li><strong>購入経路を選ぶ。</strong> 直接販売またはオンラインストアへの誘導を設定し、必要に応じてサブスクを有効にします。</li><li><strong>越境の対象市場を選ぶ。</strong> 販売可否、価格、配送、返品、顧客対応を販売先に合わせます。</li><li><strong>購入と運用を確認する。</strong> 購入者の体験、注文・出荷の引き継ぎを確認します。WalletやMinisを開発する場合は、それぞれのSDK・API資料を使います。</li><li><strong>結果を測定する。</strong> 新規顧客、海外注文、購入完了率、継続率、利益、運用工数を導入前と比較します。</li></ol>
@@ -276,15 +309,36 @@
 <details class="faq-item"><summary>Shop Minisへの商品表示を個別に選べますか？</summary><div class="faq-answer">
 <p>Shopが関連性に基づいてMinisに表示する商品を決定します。事業者がMiniへの表示商品を選んだり、Minisだけを対象に表示を拒否したりすることはできません。全体の商品公開状態や掲載要件は引き続き関係します。<a href="https://help.shopify.com/ja/manual/online-sales-channels/shop/customer-experience">出典：顧客体験におけるShop Minis</a>。</p>
 </div></details>
+<details class="faq-item"><summary>Shop MCP・Shop.md・shop.devの違いは何ですか？</summary><div class="faq-answer">
+<p>Shop.mdは利用者がエージェントを設定する入口、Shop MCPは購買ツールの提供先、shop.devは開発者向けのガイドとPlaygroundです。パーソナルショッパーを使うならShop.md、連携を開発するならshop.devから始められます。<a href="https://shop.md/">出典：Shop.md</a>、<a href="https://shop.dev/">shop.dev</a>。</p>
+</div></details>
+<details class="faq-item"><summary>検索にAPIキーやShopサインインは必要ですか？</summary><div class="faq-answer">
+<p>Shop MCPの検索はどちらも不要です。保存済みのShop情報、好みを反映した結果、注文・アカウントのツールにはサインインを使います。Global Catalogを直接呼ぶ場合は、キーなしでもagent profileが必要です。開発者のAPI認証情報はレート制限を引き上げるためのもので、利用者をサインインさせるものではありません。<a href="https://shop.dev/docs/authentication">出典：Shop認証</a>、<a href="https://shop.dev/docs/catalog-api">Catalog API</a>。</p>
+</div></details>
+<details class="faq-item"><summary>Global Catalogだけで購入まで完了できますか？</summary><div class="faq-answer">
+<p>できません。3つのツールは商品検索と詳細取得を担当します。Shop MCPを加えるか、マーチャントのCart・Checkout・Order MCPを連携します。<code>complete_checkout</code>を直接呼ぶには、購入確定を許可されたトークン、準備完了のチェックアウト、支払い認証情報、利用者の承認が必要です。<a href="https://shopify.dev/docs/agents/catalog">出典：Catalogの種類</a>、<a href="https://shopify.dev/docs/agents/profiles/auth-and-rate-limiting">UCPの認可</a>、<a href="https://shopify.dev/docs/agents/carts-and-checkout/checkout-mcp">Checkout MCP</a>。</p>
+</div></details>
+<details class="faq-item"><summary>既存のCatalog連携をShop MCPへ移行する必要はありますか？</summary><div class="faq-answer">
+<p>移行は不要です。既存のCatalog直接連携は継続利用できます。Shopアカウントや購入フローが自社の体験に合う場合に、Shop MCPの追加を検討します。<a href="https://shopify.dev/changelog/posts/add-shopping-and-shop-pay-checkout-to-any-agent-with-shop-mcp">出典：Shop MCP公開情報</a>。</p>
+</div></details>
+<details class="faq-item"><summary>単一ストアや、決まった商品範囲にはどのCatalogが適していますか？</summary><div class="faq-answer">
+<p>1つのマーチャントにはStorefront Catalogを使います。複数ストアやカテゴリの同じ条件を繰り返し使う場合は、Dev DashboardのSaved Catalog設定を検討します。どちらも商品検索の選択肢であり、チェックアウトと注文処理は別の機能です。<a href="https://shopify.dev/docs/agents/catalog">出典：CatalogとSaved Catalogs</a>。</p>
+</div></details>
+<details class="faq-item"><summary>Shop MCPを接続すると、確認なしで購入されますか？</summary><div class="faq-answer">
+<p>接続やサインインだけでは購入を承認したことにはなりません。Shopifyのチェックアウトでは、利用者が販売元、商品、数量、総額、提示された支払方法を確認してから購入を確定します。Shopify以外の購入承認は、Shop上で購入内容、保存済みカード、上限を確認する別のフローで、クライアントの権限も必要です。<a href="https://shop.dev/docs/checkout">出典：チェックアウトの購入確認</a>、<a href="https://shop.dev/docs/approvals">購入承認</a>。</p>
+</div></details>
+<details class="faq-item"><summary>MCPクライアントが接続できない場合は何を確認しますか？</summary><div class="faq-answer">
+<p><code>/mcp</code>を付けずに<code>https://mcp.shop.com/</code>を使い、MCP <code>2026-07-28</code>と<code>server/discover</code>への対応を確認します。従来の<code>initialize</code>のみ対応するクライアントでは、CLIまたはHTTPを使います。選んだ接続方法に対応するスキルを読み込んでください。<a href="https://shop.dev/docs/connect">出典：エージェントの接続</a>。</p>
+</div></details>
 </section>
 <section class="section" id="references" aria-labelledby="references-title"><h2 id="references-title">10. 参考資料</h2>
-<ul><li><a href="https://www.shopify.com/jp/checkout">Shopify Checkout</a></li><li><a href="https://www.shopify.com/jp/shop">Shopで販売</a></li><li><a href="https://help.shopify.com/ja/manual/online-sales-channels/shop">Shopの概要と対応言語</a></li><li><a href="https://help.shopify.com/ja/manual/online-sales-channels/shop/customer-experience">Shopの顧客体験</a></li><li><a href="https://help.shopify.com/ja/manual/online-sales-channels/shop/manage-shop-store/products-and-collections">Shopの商品管理とサブスクリプション</a></li><li><a href="https://help.shopify.com/ja/manual/online-sales-channels/shop/eligibility/requirements">Shopの事業者要件</a></li><li><a href="https://help.shopify.com/ja/manual/online-sales-channels/shop/marketing/posts">Shopの投稿</a></li><li><a href="https://help.shopify.com/ja/manual/online-sales-channels/shop/shop-campaigns">Shop Campaigns</a></li><li><a href="https://help.shopify.com/ja/manual/online-sales-channels/shop/product-reviews">Shopの商品レビュー</a></li><li><a href="https://help.shopify.com/ja/manual/fulfillment/setup/shop-promise/activate">Shop Promise</a></li><li><a href="https://help.shopify.com/ja/manual/online-sales-channels/shop/setup">Shopチャネルの設定</a></li><li><a href="https://help.shopify.com/ja/manual/online-sales-channels/shop/marketing/settings">Shopのマーケティング設定</a></li><li><a href="https://help.shop.app/en/shop/shopping/discover/shop-minis">購入者向けShop Minisガイド</a></li><li><a href="https://shopify.dev/docs/api/shop-minis">Shop Minis SDK</a></li><li><a href="https://help.shopify.com/ja/manual/payments/shop-pay/shop-pay-on-any-platform">あらゆるプラットフォームでのShop Pay</a></li><li><a href="https://shopify.dev/docs/api/commerce-components/pay">Shop Pay Wallet連携</a></li><li><a href="https://shop.md/">Shop.md</a></li><li><a href="https://shopify.dev/changelog/posts/add-shopping-and-shop-pay-checkout-to-any-agent-with-shop-mcp">Shop MCPの公開</a></li></ul>
+<ul><li><a href="https://www.shopify.com/jp/checkout">Shopify Checkout</a></li><li><a href="https://www.shopify.com/jp/shop">Shopで販売</a></li><li><a href="https://help.shopify.com/ja/manual/online-sales-channels/shop">Shopの概要と対応言語</a></li><li><a href="https://help.shopify.com/ja/manual/online-sales-channels/shop/customer-experience">Shopの顧客体験</a></li><li><a href="https://help.shopify.com/ja/manual/online-sales-channels/shop/manage-shop-store/products-and-collections">Shopの商品管理とサブスクリプション</a></li><li><a href="https://help.shopify.com/ja/manual/online-sales-channels/shop/eligibility/requirements">Shopの事業者要件</a></li><li><a href="https://help.shopify.com/ja/manual/online-sales-channels/shop/marketing/posts">Shopの投稿</a></li><li><a href="https://help.shopify.com/ja/manual/online-sales-channels/shop/shop-campaigns">Shop Campaigns</a></li><li><a href="https://help.shopify.com/ja/manual/online-sales-channels/shop/product-reviews">Shopの商品レビュー</a></li><li><a href="https://help.shopify.com/ja/manual/fulfillment/setup/shop-promise/activate">Shop Promise</a></li><li><a href="https://help.shopify.com/ja/manual/online-sales-channels/shop/setup">Shopチャネルの設定</a></li><li><a href="https://help.shopify.com/ja/manual/online-sales-channels/shop/marketing/settings">Shopのマーケティング設定</a></li><li><a href="https://help.shop.app/en/shop/shopping/discover/shop-minis">購入者向けShop Minisガイド</a></li><li><a href="https://shopify.dev/docs/api/shop-minis">Shop Minis SDK</a></li><li><a href="https://help.shopify.com/ja/manual/payments/shop-pay/shop-pay-on-any-platform">あらゆるプラットフォームでのShop Pay</a></li><li><a href="https://shopify.dev/docs/api/commerce-components/pay">Shop Pay Wallet連携</a></li><li><a href="https://shop.md/">Shop.md</a></li><li><a href="https://shopify.dev/changelog/posts/add-shopping-and-shop-pay-checkout-to-any-agent-with-shop-mcp">Shop MCPの公開</a></li><li><a href="https://shop.dev/">開発者ポータル・Playground：shop.dev</a></li><li><a href="https://shop.dev/docs">Shop MCP概要</a></li><li><a href="https://shop.dev/docs/connect">エージェント接続とスキルの読み込み</a></li><li><a href="https://shop.com/skill.md">Shop設定用スキル</a></li><li><a href="https://mcp.shop.com/skill.md">Shop MCPスキル</a></li><li><a href="https://shop.dev/docs/tools">Shop MCPツールリファレンス</a></li><li><a href="https://shop.dev/docs/authentication">Shop MCP認証</a></li><li><a href="https://shop.dev/docs/checkout">Shop MCPカートとチェックアウト</a></li><li><a href="https://shop.dev/docs/approvals">Shopify以外での購入承認</a></li><li><a href="https://shop.dev/docs/catalog-api">Catalog APIとShop MCPの比較</a></li><li><a href="https://shopify.dev/docs/agents/catalog">Catalogの種類とSaved Catalogs</a></li><li><a href="https://shopify.dev/docs/agents/profiles/auth-and-rate-limiting">UCP認証とレート制限</a></li><li><a href="https://shopify.dev/docs/agents/carts-and-checkout/checkout-mcp">Checkout MCP</a></li></ul>
 </section>
 <section class="section disclaimer" id="disclaimer" aria-labelledby="disclaimer-title"><h2 id="disclaimer-title">免責事項</h2>
 <p>このページはShopifyの公式ドキュメントではありません。作成者は、内容の正確性、完全性、利用に伴う結果について責任を負いません。Shopifyの概念やワークフローを理解するための補足資料として、ご自身の判断でご利用ください。内容は予告なく変更される場合があります。</p>
 </section></main>
   </div>
-  <footer>Shop · 公開情報の確認日：2026年10月15日</footer>
+  <footer>Shop · 公開情報の確認日：2026年10月15日 · MCP・Catalog更新：2026年10月19日</footer>
   <dialog class="diagram-dialog" aria-label="図を拡大"><div class="dialog-tools"><button class="diagram-close" type="button">図を閉じる</button></div><div class="dialog-diagram"></div></dialog>
 </body>
 </html>

@@ -2,7 +2,7 @@
 
 Connect product discovery, faster checkout, and repeat purchases through Shop. Explore cross-border sales, subscriptions, and agentic shopping as opportunities to grow beyond an existing marketplace mix.
 
-Public documentation reviewed: **October 15, 2026**. Diagrams describe documented interfaces and merchant-visible workflows; they do not describe Shopify internal implementation.
+Public documentation reviewed: **October 15, 2026**; Shop MCP, Shop.md, shop.dev, and Catalog comparison updated **October 19, 2026**. Diagrams describe documented interfaces and merchant-visible workflows; they do not describe Shopify internal implementation.
 
 ## 1. Why Shop matters
 
@@ -34,7 +34,9 @@ Treat sales growth as a hypothesis to measure. Start with one market and product
 | Shopify Payments | Payment processing and payouts; distinct from the Shop shopping destination |
 | Shop Minis | Interactive shopping experiences inside the Shop app, built with a React SDK |
 | Shop Pay Wallet | Integration that adds Shop Pay to an existing non-Shopify checkout |
-| Shop.md / Shop MCP | Entry point and tools connecting personal AI agents to product search, checkout, and order tracking |
+| Shop.md | Shopper entry point for setting up a personal AI shopping agent |
+| Shop MCP | Hosted tools for product discovery, carts, checkout, Shop accounts, and order tracking |
+| shop.dev | Developer portal with a playground, connection guides, and API references |
 | Shopify Catalog / UCP | Product discovery data and a commerce protocol used by supported agentic experiences |
 
 ```mermaid
@@ -43,7 +45,7 @@ flowchart TB
     Channel --> Shop["Shop: mobile and web"]
     Merchant --> Catalog["Shopify Catalog"]
     Catalog --> Agents["Supported AI shopping experiences"]
-    Catalog --> MCP["Shop MCP / Shop.md"]
+    Catalog --> MCP["Shop MCP"]
     Shop --> Minis["Shop Minis: interactive discovery"]
     Shop --> Checkout["Shop or merchant checkout"]
     Minis --> Checkout
@@ -285,9 +287,65 @@ Create sessions with `ShopPayPaymentRequestSessionCreate` and submit them with `
 
 The recovery paths are integration design recommendations based on the public Wallet guides. Establish ownership for reconciliation, fulfillment, refunds, and disputes. [Sources: Monitoring and resiliency](https://shopify.dev/docs/api/commerce-components/pay/monitoring), [GraphQL post-payment](https://shopify.dev/docs/api/commerce-components/pay/graphql-post-payment).
 
-## 7. Shop.md and personal AI shopping agents
+## 7. Shop MCP, Shop.md, and shop.dev
 
-[Shop.md](https://shop.md/) is a public entry point for connecting a personal AI agent to Shop. It presents personalized search, Shop Pay checkout, and order tracking. It is separate from this repository’s Markdown source. Shop MCP provides the documented search, cart, checkout, sign-in, and order tools behind supported agent integrations.
+Shop connects personal AI agents to shopping as well as serving shoppers in its own app. Three public surfaces help different audiences get started. [Sources: Shop.md](https://shop.md/), [Shop MCP overview](https://shop.dev/docs), [shop.dev developer portal](https://shop.dev/).
+
+### Understand the three roles
+
+| Surface | Audience and role | Start here |
+| --- | --- | --- |
+| Shop.md | Shoppers setting up a personal AI shopper | Copy a setup prompt, use the ChatGPT or Claude directory links, or follow “Build your own skill” |
+| Shop MCP | Developers and compatible agents calling shopping tools | Connect to `https://mcp.shop.com/` for discovery, carts, checkout, account access, and orders |
+| shop.dev | Developers building a shopping app or agent | Explore the playground, quickstart, connection guides, and tool/API references |
+
+Shop.md guides setup; the connected agent uses Shop’s tools to perform the shopping. It is also separate from this repository’s Markdown source. The public [Shop setup skill](https://shop.com/skill.md) selects the first available connection in CLI, MCP, then HTTP order. Use one connection method with its matching skill. MCP guidance is published as [Shop MCP skill](https://mcp.shop.com/skill.md) and the resource `skill://shop/SKILL.md`. These files describe agent behavior; they are not shopper accounts or payment authorization. [Source: Connect an agent](https://shop.dev/docs/connect).
+
+### What Shop MCP provides
+
+The public tool reference lists **17 tools**, grouped below. The CLI, compatible MCP clients, and direct HTTP calls reach the same service; an ordinary app can use the tools without a language model. [Sources: Shop MCP overview](https://shop.dev/docs), [Tool reference](https://shop.dev/docs/tools).
+
+| Tool group | Capability | Shop sign-in |
+| --- | --- | --- |
+| Catalog: 3 tools | `search_catalog`, `lookup_catalog`, and `get_product` for discovery and product/variant details | Optional; signed-in results can reflect saved preferences |
+| Cart and checkout: 7 tools | Create, read, and update a cart or checkout; submit a supported purchase | Optional for tool access; saved addresses and Shop Pay use the shopper’s account |
+| Account and orders: 2 tools | `get_account` and `search_orders` for account details and active/recent orders | Required |
+| Purchase approvals: 5 tools | Request and manage approval for an agent paying at a non-Shopify checkout | Required; client permissions also apply |
+
+Use the root endpoint exactly as documented, without appending `/mcp`. MCP clients must support protocol version `2026-07-28`; older clients limited to the `initialize` handshake need the CLI or HTTP route instead. Follow the [connection guide](https://shop.dev/docs/connect) for the current requirements.
+
+### How Shop MCP relates to Global Catalog
+
+Shop MCP’s discovery tools call Shopify’s Global Catalog. An application can also call Global Catalog directly when it needs product discovery while managing the rest of the experience itself. The arrows below show documented responsibilities, not Shopify’s internal deployment. [Source: Catalog API comparison](https://shop.dev/docs/catalog-api).
+
+```mermaid
+flowchart TB
+    Entry["Shop.md<br/>Shopper setup"] --> Agent["Personal AI agent"]
+    Docs["shop.dev<br/>Developer resources"] -.-> Agent
+    Skill["Shop skill<br/>Agent guidance"] -.-> Agent
+    Agent -->|CLI, MCP, or HTTP| MCP["Shop MCP<br/>mcp.shop.com"]
+    MCP -->|Discovery| Catalog["Global Catalog<br/>Shopify discovery"]
+    MCP -->|Cart and checkout| Merchant["Merchant commerce<br/>Cart / Checkout / Order MCP"]
+    MCP -->|Account and orders| Account["Shop account<br/>and orders"]
+    App["Your app or agent<br/>Own agent profile"] -->|Discovery| Catalog
+    App -->|Direct UCP| Merchant
+```
+
+| Decision | Shop MCP | Direct Global Catalog MCP |
+| --- | --- | --- |
+| Endpoint | `https://mcp.shop.com/` | `https://catalog.shopify.com/api/ucp/mcp` |
+| Tool coverage | Discovery plus shopping and Shop account tools | Three discovery tools: search, lookup, and product details |
+| Agent profile for Catalog calls | Shop MCP supplies its own | Publish and send your own profile on each call |
+| Credentials | Shopper’s Shop token for account features; search can be anonymous | API credentials identify the application; search can be keyless at lower limits |
+| Best fit | Connect a personal shopper through purchase and tracking | Add discovery to your own app and control the surrounding integration |
+
+The three discovery tools accept the same `catalog` arguments. For direct Catalog requests, send the public profile URL in `meta.ucp-agent.profile`; missing profiles are rejected with HTTP 422. Shop MCP supplies its own profile, so do not copy that Catalog metadata into its search arguments. [Source: Catalog API](https://shop.dev/docs/catalog-api).
+
+An agent profile declares capabilities; it does not sign in a shopper. An API key and its access token identify the developer’s application and enable higher Catalog limits. A Shop account token represents the shopper. Direct UCP integrations can separately use buyer-linked tokens where supported. These credentials serve different purposes. [Sources: Shop authentication](https://shop.dev/docs/authentication), [UCP authentication and rate limiting](https://shopify.dev/docs/agents/profiles/auth-and-rate-limiting).
+
+Choose **Saved Catalogs** when a direct Global Catalog integration repeatedly needs the same store or category filters; save the configuration in Dev Dashboard. For an agent serving only one merchant, evaluate **Storefront Catalog** at `https://{storeDomain}/api/ucp/mcp`. Global Catalog itself performs discovery. To add purchasing or order access directly, integrate the merchant’s Cart, Checkout, and Order MCP capabilities with the required profile, credentials, and permissions. A Catalog API key alone does not grant purchase-completion permission. [Sources: Catalog interfaces and Saved Catalogs](https://shopify.dev/docs/agents/catalog), [UCP authentication](https://shopify.dev/docs/agents/profiles/auth-and-rate-limiting), [Checkout MCP](https://shopify.dev/docs/agents/carts-and-checkout/checkout-mcp).
+
+### From discovery to a confirmed purchase
 
 ```mermaid
 sequenceDiagram
@@ -297,27 +355,38 @@ sequenceDiagram
     participant Store as Merchant checkout
     Buyer->>Agent: Describe a need or a product
     Agent->>MCP: Search and retrieve product details
-    MCP-->>Agent: Product choices, prices, and availability
+    MCP-->>Agent: Products, variants, and seller.domain
     Agent-->>Buyer: Present choices and purchase conditions
-    Buyer->>Agent: Choose an item
-    Agent->>MCP: Build cart and create checkout
+    Buyer->>Agent: Request checkout for the chosen item
     opt Use saved Shop Pay details
         Buyer->>MCP: Sign in with Shop
     end
-    Agent-->>Buyer: Ask to confirm total and payment method
-    Buyer->>Agent: Approve the purchase
-    Agent->>MCP: Complete supported checkout
-    MCP->>Store: Coordinate purchase
-    Agent->>MCP: Poll checkout status
-    MCP-->>Agent: Completed checkout and order, or current status
-    Agent-->>Buyer: Report confirmed result
+    Agent->>MCP: Create checkout with the seller
+    MCP->>Store: Prepare merchant checkout
+    MCP-->>Agent: Totals, payment methods, and continue_url
+    alt Ready with an offered payment method
+        Agent-->>Buyer: Confirm merchant, items, total, and payment
+        Buyer->>Agent: Approve the purchase and payment method
+        Agent->>MCP: complete_checkout once
+        MCP->>Store: Submit the purchase
+    else Shopper action required
+        Agent-->>Buyer: Share merchant continue_url
+        Buyer->>Store: Review and complete the required steps
+    end
+    Agent->>MCP: get_checkout to check the result
+    MCP-->>Agent: Latest status and order if completed
+    Agent-->>Buyer: Report confirmed order or unconfirmed status
     opt Later order tracking with sign-in
-        Agent->>MCP: Search orders and tracking
+        Agent->>MCP: search_orders
         MCP-->>Agent: Order and delivery information
     end
 ```
 
-This sequence describes a supported Shopify-store route. Non-Shopify stores have a separate documented approval and payment route. Search can work without credentials; saved Shop Pay details and order search require shopper sign-in. Purchases require the shopper to confirm the total and payment method. At the October 13, 2026 launch, Shop MCP has no webhooks: poll checkout status. This differs from the Wallet integration’s merchant webhooks. [Source: Shop MCP launch and supported flows](https://shopify.dev/changelog/posts/add-shopping-and-shop-pay-checkout-to-any-agent-with-shop-mcp).
+Each checkout belongs to one merchant. Share its `continue_url` so the shopper can review and pay; use it when the checkout requires escalation or offers no usable payment method. Only `status: completed` with an `order` confirms a purchase. If completion times out or is ambiguous, read `get_checkout`; do not submit `complete_checkout` again or create a replacement purchase. [Source: Carts and checkout](https://shop.dev/docs/checkout).
+
+This sequence describes a Shopify-store route. At the October 13, 2026 launch, Shop MCP has no webhooks, so checkout status is polled. Existing direct Catalog integrations continue to work without changes. [Source: Shop MCP launch](https://shopify.dev/changelog/posts/add-shopping-and-shop-pay-checkout-to-any-agent-with-shop-mcp).
+
+For a non-Shopify checkout, the separate approval flow lets the shopper review the store, terms, saved card, and spending limit in Shop before the agent receives purchase-specific payment credentials. It depends on client permissions and is not a fallback for a failed Shopify checkout. This agent approval route is distinct from the merchant-built **Shop Pay Wallet** integration described in section 6. [Source: Approvals outside Shopify](https://shop.dev/docs/approvals).
 
 ## 8. Getting started and measuring results
 
@@ -364,6 +433,34 @@ Shop is the shopping and post-purchase destination. Shop Pay is the accelerated 
 
 Shop determines relevant products for Minis. Merchants cannot choose which products appear in a Mini or opt out specifically from Minis. Overall product publication and eligibility remain relevant. [Source: Shop Minis in the customer experience](https://help.shopify.com/en/manual/online-sales-channels/shop/customer-experience).
 
+### How are Shop MCP, Shop.md, and shop.dev different?
+
+Shop.md helps shoppers set up an agent, Shop MCP supplies the shopping tools, and shop.dev provides developer guides and a playground. Start with Shop.md to use a personal shopper or shop.dev to build an integration. [Sources: Shop.md](https://shop.md/), [shop.dev](https://shop.dev/).
+
+### Do I need an API key or a Shop sign-in to search?
+
+Shop MCP search works without either. Sign in to use saved Shop details, personalized results, and order/account tools. For direct Global Catalog calls, send an agent profile even without a key; developer API credentials enable higher limits. They do not sign in a shopper. [Sources: Shop authentication](https://shop.dev/docs/authentication), [Catalog API](https://shop.dev/docs/catalog-api).
+
+### Can Global Catalog alone complete a purchase?
+
+No. Its three tools discover products and retrieve details. Add Shop MCP or integrate the merchant’s Cart, Checkout, and Order MCP capabilities. Direct `complete_checkout` requires a token permitted to complete purchases, a ready checkout, payment credentials, and buyer approval. [Sources: Catalog interfaces](https://shopify.dev/docs/agents/catalog), [UCP authorization](https://shopify.dev/docs/agents/profiles/auth-and-rate-limiting), [Checkout MCP](https://shopify.dev/docs/agents/carts-and-checkout/checkout-mcp).
+
+### Must an existing Catalog integration migrate to Shop MCP?
+
+No migration is required. Existing direct Catalog integrations continue working. Add Shop MCP when its Shop account and purchase flow fit your experience. [Source: Shop MCP launch](https://shopify.dev/changelog/posts/add-shopping-and-shop-pay-checkout-to-any-agent-with-shop-mcp).
+
+### Which Catalog option fits one store or a fixed product selection?
+
+Use Storefront Catalog for one merchant. For repeated cross-merchant store/category filters, evaluate a Saved Catalog configuration in Dev Dashboard. Both choices concern discovery; checkout and order handling remain separate capabilities. [Source: Catalogs and Saved Catalogs](https://shopify.dev/docs/agents/catalog).
+
+### Does connecting Shop MCP let an agent buy without confirmation?
+
+No. A connection or sign-in is not purchase approval. For a Shopify checkout, the shopper reviews the merchant, items, quantities, total, and offered payment method before completion. Non-Shopify approvals use a separate Shop review of the purchase, saved card, and limit, subject to client permissions. [Sources: Checkout confirmation](https://shop.dev/docs/checkout), [Purchase approvals](https://shop.dev/docs/approvals).
+
+### Why might an MCP client fail to connect?
+
+Use `https://mcp.shop.com/`, without `/mcp`, and check support for MCP `2026-07-28` and `server/discover`. Older `initialize`-only clients need the CLI or HTTP route. Load the skill that matches the chosen connection method. [Source: Connect an agent](https://shop.dev/docs/connect).
+
 ## 10. References
 
 - [Shopify Checkout](https://www.shopify.com/checkout)
@@ -384,6 +481,19 @@ Shop determines relevant products for Minis. Merchants cannot choose which produ
 - [Shop Pay Wallet integration](https://shopify.dev/docs/api/commerce-components/pay)
 - [Shop.md](https://shop.md/)
 - [Shop MCP launch](https://shopify.dev/changelog/posts/add-shopping-and-shop-pay-checkout-to-any-agent-with-shop-mcp)
+- [shop.dev developer portal and playground](https://shop.dev/)
+- [Shop MCP overview](https://shop.dev/docs)
+- [Connect an agent and load the skill](https://shop.dev/docs/connect)
+- [Shop setup skill](https://shop.com/skill.md)
+- [Shop MCP skill](https://mcp.shop.com/skill.md)
+- [Shop MCP tool reference](https://shop.dev/docs/tools)
+- [Shop MCP authentication](https://shop.dev/docs/authentication)
+- [Shop MCP carts and checkout](https://shop.dev/docs/checkout)
+- [Purchase approvals outside Shopify](https://shop.dev/docs/approvals)
+- [Catalog API and Shop MCP comparison](https://shop.dev/docs/catalog-api)
+- [Catalog interfaces and Saved Catalogs](https://shopify.dev/docs/agents/catalog)
+- [UCP authentication and rate limiting](https://shopify.dev/docs/agents/profiles/auth-and-rate-limiting)
+- [Checkout MCP](https://shopify.dev/docs/agents/carts-and-checkout/checkout-mcp)
 
 ## Disclaimer
 

@@ -9,7 +9,7 @@ The goal is to collect product-specific architecture notes, integration behavior
 | Document | Shopify product | Coverage |
 | --- | --- | --- |
 | [Shopify Collective Architecture](./products/shopify-collective/architecture.md) | Shopify Collective | Retailer and supplier flows for product import, price and inventory sync, shipping, orders, automatic payments, fulfillment, cancellations, returns, and pricing-related changes. |
-| [Shop Value, Channels, and Architecture](./products/shop/architecture.md) | Shop | Business value, Shop Pay in Checkout, Shop channel and Agentic Commerce, Shop Minis architecture, Shop Pay off Shopify payment and order flows, Shop.md, subscriptions, and multilingual FAQs. |
+| [Shop Value, Channels, and Architecture](./products/shop/architecture.md) | Shop | Business value, Shop Pay in Checkout, Shop channel and Agentic Commerce, Shop Minis architecture, Shop Pay off Shopify payment and order flows, Shop MCP, Shop.md, shop.dev, Global Catalog integration choices, subscriptions, and multilingual FAQs. |
 
 ## GitHub Pages
 
