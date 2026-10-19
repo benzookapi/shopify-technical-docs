@@ -2,7 +2,7 @@
 
 Connect product discovery, faster checkout, and repeat purchases through Shop. Explore cross-border sales, subscriptions, and agentic shopping as opportunities to grow beyond an existing marketplace mix.
 
-Public documentation reviewed: **October 15, 2026**; Shop MCP, Shop.md, shop.dev, and Catalog comparison updated **October 19, 2026**. Diagrams describe documented interfaces and merchant-visible workflows; they do not describe Shopify internal implementation.
+Public documentation reviewed: **October 15, 2026**; Shop MCP, Shop.md, and Catalog comparison updated **October 19, 2026**. Diagrams describe documented interfaces and merchant-visible workflows; they do not describe Shopify internal implementation.
 
 ## 1. Why Shop matters
 
@@ -36,7 +36,6 @@ Treat sales growth as a hypothesis to measure. Start with one market and product
 | Shop Pay Wallet | Integration that adds Shop Pay to an existing non-Shopify checkout |
 | Shop.md | Shopper entry point for setting up a personal AI shopping agent |
 | Shop MCP | Hosted tools for product discovery, carts, checkout, Shop accounts, and order tracking |
-| shop.dev | Developer portal with a playground, connection guides, and API references |
 | Shopify Catalog / UCP | Product discovery data and a commerce protocol used by supported agentic experiences |
 
 ```mermaid
@@ -287,17 +286,16 @@ Create sessions with `ShopPayPaymentRequestSessionCreate` and submit them with `
 
 The recovery paths are integration design recommendations based on the public Wallet guides. Establish ownership for reconciliation, fulfillment, refunds, and disputes. [Sources: Monitoring and resiliency](https://shopify.dev/docs/api/commerce-components/pay/monitoring), [GraphQL post-payment](https://shopify.dev/docs/api/commerce-components/pay/graphql-post-payment).
 
-## 7. Shop MCP, Shop.md, and shop.dev
+## 7. Shop MCP and Shop.md
 
-Shop connects personal AI agents to shopping as well as serving shoppers in its own app. Three public surfaces help different audiences get started. [Sources: Shop.md](https://shop.md/), [Shop MCP overview](https://shop.dev/docs), [shop.dev developer portal](https://shop.dev/).
+Shop connects personal AI agents to shopping as well as serving shoppers in its own app. Shop MCP provides the shopping tools, and Shop.md helps shoppers connect an agent to those capabilities. [Sources: Shop MCP overview](https://shop.dev/docs), [Shop.md](https://shop.md/).
 
-### Understand the three roles
+### Understand the two roles
 
 | Surface | Audience and role | Start here |
 | --- | --- | --- |
 | Shop.md | Shoppers setting up a personal AI shopper | Copy a setup prompt, use the ChatGPT or Claude directory links, or follow “Build your own skill” |
 | Shop MCP | Developers and compatible agents calling shopping tools | Connect to `https://mcp.shop.com/` for discovery, carts, checkout, account access, and orders |
-| shop.dev | Developers building a shopping app or agent | Explore the playground, quickstart, connection guides, and tool/API references |
 
 Shop.md guides setup; the connected agent uses Shop’s tools to perform the shopping. It is also separate from this repository’s Markdown source. The public [Shop setup skill](https://shop.com/skill.md) selects the first available connection in CLI, MCP, then HTTP order. Use one connection method with its matching skill. MCP guidance is published as [Shop MCP skill](https://mcp.shop.com/skill.md) and the resource `skill://shop/SKILL.md`. These files describe agent behavior; they are not shopper accounts or payment authorization. [Source: Connect an agent](https://shop.dev/docs/connect).
 
@@ -321,7 +319,6 @@ Shop MCP’s discovery tools call Shopify’s Global Catalog. An application can
 ```mermaid
 flowchart TB
     Entry["Shop.md<br/>Shopper setup"] --> Agent["Personal AI agent"]
-    Docs["shop.dev<br/>Developer resources"] -.-> Agent
     Skill["Shop skill<br/>Agent guidance"] -.-> Agent
     Agent -->|CLI, MCP, or HTTP| MCP["Shop MCP<br/>mcp.shop.com"]
     MCP -->|Discovery| Catalog["Global Catalog<br/>Shopify discovery"]
@@ -433,9 +430,9 @@ Shop is the shopping and post-purchase destination. Shop Pay is the accelerated 
 
 Shop determines relevant products for Minis. Merchants cannot choose which products appear in a Mini or opt out specifically from Minis. Overall product publication and eligibility remain relevant. [Source: Shop Minis in the customer experience](https://help.shopify.com/en/manual/online-sales-channels/shop/customer-experience).
 
-### How are Shop MCP, Shop.md, and shop.dev different?
+### How are Shop MCP and Shop.md different?
 
-Shop.md helps shoppers set up an agent, Shop MCP supplies the shopping tools, and shop.dev provides developer guides and a playground. Start with Shop.md to use a personal shopper or shop.dev to build an integration. [Sources: Shop.md](https://shop.md/), [shop.dev](https://shop.dev/).
+Shop MCP supplies the tools for product discovery, carts, checkout, and order tracking. Shop.md is the shopper-facing entry point for setting up a personal AI shopper that uses those tools. [Sources: Shop MCP overview](https://shop.dev/docs), [Shop.md](https://shop.md/).
 
 ### Do I need an API key or a Shop sign-in to search?
 
